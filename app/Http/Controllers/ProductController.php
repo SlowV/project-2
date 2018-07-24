@@ -113,7 +113,12 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $obj = Product::find($id);
+        if ($obj == null) {
+            return response('article not found or has been deleted!', 404);
+        }
+        $obj->delete();
+        return response('Deleted', 200);
     }
 
     public function getListEdit(){
@@ -121,13 +126,4 @@ class ProductController extends Controller
         return view('admin.product.listEdit')->with('products', $products);
     }
 
-    public function delete($id)
-    {
-        $product = Product::find($id);
-        if ($product == null) {
-            return view('404');
-        }
-        $product->delete();
-        return redirect('/admin/bakery/list');
-    }
 }

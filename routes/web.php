@@ -13,7 +13,7 @@
 
 use \Illuminate\Support\Facades\Route;
 
-Route::get('/admin/product/listEdit', 'ProductController@getListEdit');
-Route::post('/admin/product/destroy/{id}', 'ProductController@delete');
 Route::resource('admin/product', 'ProductController');
+
+Route::resource('user/', 'PageUserController');
 
